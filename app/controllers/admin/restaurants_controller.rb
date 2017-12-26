@@ -4,6 +4,8 @@ class Admin::RestaurantsController < ApplicationController
   # self define admin action
   before_action :authenticate_admin
 
+  before_action :set_restaurant, only:  [:show, :edit, :update, :destroy]
+
   def index
     @restaurants = Restaurant.all
   end
@@ -24,10 +26,28 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
+  end
+
+  def edit
+    #@restaurant = Restaurant.find(params[:id])
+  end
+
+  def update
+    
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted"
   end
 
   private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
