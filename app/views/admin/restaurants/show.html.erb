@@ -4,6 +4,7 @@
   <li>電話: <%= @restaurant.tel %></li>
   <li>營業時間: <%= @restaurant.opening_hours %></li>
   <li>簡介: <%= @restaurant.description %></li>
+  <%= image_tag @restaurant.image, width: '600px' %>
 </ul>
 
 <%= link_to 'Back to index', admin_restaurants_path %>
