@@ -1,33 +1,36 @@
-<% if @restaurant.errors.any? %>
-  <h2>We have some errors here !</h2>
-  <ul>
-    <% @restaurant.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
 
-<%= form_for  [:admin, @restaurant] do |f| %>
+
+<%= form_for [:admin, @restaurant], html: {class: "form-group col-lg-6 col-lg-offset-3 row"} do |f| %>
   <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :class => "form-control" %>
 
   <%= f.label :tel, "Tel" %>
-  <%= f.text_field :tel %>
+  <%= f.text_field :tel, :class => "form-control" %>
 
   <%= f.label :address, "Address" %>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, :class => "form-control" %>
 
   <%= f.label :opening_hours, "Opening Hours" %>
-  <%= f.text_field :opening_hours %>
+  <%= f.text_field :opening_hours, :class => "form-control" %>
 
   <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
+  <%= f.text_area :description, :class => "form-control" %>
 
   <%= f.label :image, "Photo" %>
   <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
   <%= f.file_field :image %>
 
-  <%= f.submit %>
+  <button type="submit" class="btn btn-primary col-lg-12">Update</button>
+  <%= link_to 'Back', admin_restaurants_path, :class => "btn btn-link col-lg-12" %>
+
+  <% if @restaurant.errors.any? %>
+    <h2>Tips:</h2>
+    <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
 <% end %>
 
-<%= link_to 'Back to index', admin_restaurants_path %>
