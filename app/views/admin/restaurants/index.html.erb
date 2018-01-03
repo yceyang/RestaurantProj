@@ -24,6 +24,8 @@
 </table>
 
 <%= link_to '+', new_admin_restaurant_path, :class => "row col-lg-12" %>
-<%= paginate @restaurants, :class => "row col-lg-12" %>
+<div class="text-center">
+  <%= paginate @restaurants, :class => "row col-lg-12" %>
+</div>
 
 
