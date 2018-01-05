@@ -2,6 +2,8 @@
 
 <table class="table table-hover">
   <thead>
+    <th>#</th>
+    <th>分類</th>
     <th>餐廳名稱</th>
     <th>電話</th>
     <th>地址</th>
@@ -12,6 +14,8 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
+        <td><%= restaurant.id %></td>
+        <td>[ <%= restaurant.category.name %> ]</td>
         <td><%= restaurant.name %></td>        
         <td><%= restaurant.tel %></td>
         <td><%= restaurant.address %></td>
