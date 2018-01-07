@@ -22,12 +22,14 @@
   <thead>
     <th>#</th>
     <th>分類</th>
+    <th>功能</th>
   </thead>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.id %></td>
         <td><%= category.name %></td>
+        <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td> <!-- categories?id=1 -->
       </tr>
     <% end %>
   </tbody>
