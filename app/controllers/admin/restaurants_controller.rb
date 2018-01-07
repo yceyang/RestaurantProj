@@ -1,4 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
+class Admin::RestaurantsController < Admin::BaseController
   # user login 
   #before_action :authenticate_user!
   # self define admin action
