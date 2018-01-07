@@ -1,6 +1,16 @@
 
-
 <%= form_for [:admin, @restaurant], html: {class: "form-group col-lg-6 col-lg-offset-3 row"} do |f| %>
+  
+  <%= f.label :category_id, "Category" %>
+  <%= f.collection_select(
+    :category_id,
+    Category.all,
+    :id,
+    :name,
+    {prompt: "請選擇"},
+    {class: "form-control"}
+  ) %>
+
   <%= f.label :name, "Name" %>
   <%= f.text_field :name, :class => "form-control" %>
 
