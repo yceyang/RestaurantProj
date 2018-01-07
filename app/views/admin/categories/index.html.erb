@@ -28,8 +28,9 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.id %></td>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td> <!-- categories?id=1 -->
+        <td><%= category.name %>
+        <td><%= link_to 'Edit', admin_categories_path(id: category.id) %> | <!-- categories?id=1 -->
+        <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
   </tbody>
