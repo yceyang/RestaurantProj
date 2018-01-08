@@ -40,26 +40,20 @@
 </div>
 
 <% @restaurants.each do |restaurant| %>
-  <% if (@counter % 4) == 0 %>
-    <div class="row">
-  <% end -%>
-  <div class="col-sm-3">
-    <div class="thumbnail">
-      <%= image_tag("242x200.png", alt: "example image") %>
+  <div class="col-sm-6 col-md-4">
+    <div class="restaurant-box">
+      <%= image_tag("380x215.png", alt: "example image", class: "img-responsive center-block") %>
       <div class="caption">
-        <h3><%= restaurant.name %></h3>
-        <p><%= restaurant.description %></p>
-        <p>地址：<%= restaurant.address %></p>
-        <p>電話：<%= restaurant.tel %></p>
-        <p>營業時間：<%= restaurant.opening_hours %></p>
+        <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+        <p class="label label-default"><%= restaurant.category.name %><p>
+        <p><%= truncate(restaurant.description, length: 80) %></p>
+        <!--p>地址：<%= restaurant.address %></p-->
+        <!--p>電話：<%= restaurant.tel %></p-->
+        <!--p>營業時間：<%= restaurant.opening_hours %></p-->
         <!--p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p-->
-        <% @counter = @counter + 1 %>
       </div>
     </div>
   </div>
-  <% if (@counter % 4) == 0 %>
-    </div>
-  <% end -%>
 <% end %>
 
 <div class="text-center">
