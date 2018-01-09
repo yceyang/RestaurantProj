@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
   # index
   def index
     @restaurants = Restaurant.page(params[:page]).per(12)
+    @categories = Category.all
   end
 
   #show

@@ -16,6 +16,19 @@
   width: 100%;
 }
 
-.restaurant-box .caption {
+.restaurant-box .caption
+{
   padding: 10px;
+}
+
+.nav-pills-center
+{
+  margin: 15px 0;
+  text-align: center;
+}
+
+.nav-pills-center > li
+{
+  float: none;
+  display: inline-block;
 }
