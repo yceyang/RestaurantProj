@@ -1,17 +1,13 @@
 
 <%#= render partial: "shared/slider" %>
 
-<ul class="nav nav-pills nav-pills-center">
+<!--ul class="nav nav-pills nav-pills-center">
   <li role="presentation" ><%= link_to "全部餐廳", root_path %></li>
   <% @categories.each do |category| %>
     <li role="presentation" class="<%= "active" if @category==category %>" >
       <%= link_to category.name, category_path(category) %>
     </li>
   <% end %>
-</ul>
+</ul-->
 
 <%= render partial: "shared/restaurant_list" %>
-
-<div class="text-center">
-  <%= paginate @restaurants %>
-</div>

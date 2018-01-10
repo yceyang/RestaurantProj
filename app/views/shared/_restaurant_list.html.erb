@@ -1,3 +1,19 @@
+<ul class="nav nav-pills nav-pills-center">
+  <% if @categories.include?(@category) %>
+    <li role="presentation" ><%= link_to "全部餐廳", root_path %></li>
+    <% @categories.each do |category| %>
+      <li role="presentation" class="<%= "active" if @category==category %>" >
+        <%= link_to category.name, category_path(category) %>
+      </li>
+    <% end %>
+  <% else %>
+    <li role="presentation" class="active" ><%= link_to "全部餐廳", root_path %></li>
+    <% @categories.each do |category| %>
+      <li role="presentation" ><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
 <% @restaurants.each do |restaurant| %>
   <div class="col-sm-6 col-md-4">
     <div class="restaurant-box">
@@ -14,3 +30,7 @@
     </div>
   </div>
 <% end %>
+
+<div class="text-center">
+  <%= paginate @restaurants %>
+</div>
