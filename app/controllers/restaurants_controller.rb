@@ -11,5 +11,8 @@ class RestaurantsController < ApplicationController
   #show
   def show
     @restaurant = Restaurant.find(params[:id])
+    @comment = Comment.new # new a comment instance
+
+    @comments = @restaurant.comments
   end
 end
