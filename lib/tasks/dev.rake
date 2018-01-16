@@ -1,24 +1,24 @@
 namespace :dev do
-  task fake: :environment do
-    Category.destroy_all
-    Restaurant.destroy_all
-
-    category_list =[
-      { name: "中式料理" },
-      { name: "日本料理" },
-      { name: "義大利料理" },
-      { name: "墨西哥料理" },
-      { name: "素食料理" },
-      { name: "美式料理" },
-      { name: "複合式料理" }
-    ]
-
-    category_list.each do |category|
-      Category.create( name: category[:name] )
+  task fake_user: :environment do
+    
+    20.times do |t|
+      User.create!(
+        email: FFaker::Internet.email,
+        password: "testuser"
+      )
     end
 
-    500.times do |i|
-      Restaurant.create!(name: FFaker::Name.first_name,
+    puts "Created fake users"
+    puts "Now you have #{User.count} users data"
+  end
+
+  task fake_restaurant: :environment do
+    
+    Restaurant.destroy_all
+
+    500.times do |t|
+      Restaurant.create!(
+        name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
         tel: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
@@ -27,8 +27,26 @@ namespace :dev do
       )
     end
 
-    puts "Category created!"
     puts "Created fake restaurants"
     puts "now you have #{Restaurant.count} restaurants data"
   end
+
+  task fake_comment: :environment do
+
+    user = User.all.drop_while{ |user| user.role == "admin" }
+
+    Restaurant.all.each do |restaurant|
+      rand(3...5).times do |t|
+        restaurant.comments.create(
+          content: FFaker::Lorem.sentence,
+          restaurant: restaurant,
+          user: user.sample
+        )
+      end
+    end
+
+    puts "Created fake comments"
+    puts "now you have #{Comment.count} comments data"
+  end
+
 end

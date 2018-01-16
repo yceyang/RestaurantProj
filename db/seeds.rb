@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# basic categories
 Category.destroy_all
 
 category_list =[
@@ -23,5 +24,6 @@ category_list.each do |category|
 end
 puts "Category created!"
 
-User.create(email: "root@example.com", password: "12345678", role: "admin")
+# root user
+User.create(email: "root@mail.com", password: "12345678", role: "admin")
 puts "Default admin created!
