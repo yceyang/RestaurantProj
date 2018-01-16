@@ -33,6 +33,8 @@ namespace :dev do
 
   task fake_comment: :environment do
 
+    Comment.delete_all
+
     user = User.all.drop_while{ |user| user.role == "admin" }
 
     Restaurant.all.each do |restaurant|
