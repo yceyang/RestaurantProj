@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  # Regular user's routes
+  root "restaurants#index"
+
+  # user
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: [:show, :edit, :update]
+  
+  # restaurant / comment
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
   end
 
+  # category
   resources :categories, only: [:show]
-
-  # Regular user's routes
-  root "restaurants#index"
 
   # Admin's routes
   namespace :admin do
