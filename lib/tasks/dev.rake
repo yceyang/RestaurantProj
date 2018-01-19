@@ -52,13 +52,13 @@ namespace :dev do
     puts "now you have #{Comment.count} comments data"
   end
 
-  task fill_user_data: :environment do
+  task fill_user_profile: :environment do
     User.all.each do |user|
 
       if user.role != "admin"
         user.name = FFaker::Name.name
         user.intro = FFaker::LoremFR.phrase
-        user.save
+        user.save!
       end
 
       puts user.email
