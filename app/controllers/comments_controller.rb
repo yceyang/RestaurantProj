@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     @restaurant = Restaurant.find(params[:restaurant_id]) # find which the restaurant is commented
     @comment = @restaurant.comments.build(comment_params) # strong params
