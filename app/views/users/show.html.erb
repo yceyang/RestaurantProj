@@ -1,0 +1,18 @@
+  
+<div class="row">
+  <div class="col-sm-4">
+    <% if @user.avator? %>
+      <%= image_tag(@user.avator.url, alt: "profile image", class: "img-responsive center-block") %>
+    <% else %>
+      <%= image_tag("blank-profile.png", alt: "profile image", class: "img-responsive center-block") %>
+    <% end %>
+  </div>
+
+  <div class="col-sm-8">
+    <h1><%= @user.name %></h1>
+    <h4><%= @user.email %></h4>
+    <h5><%= @user.intro %></h5>
+
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" if current_user.id == @user.id %>
+  </div>
+</div>

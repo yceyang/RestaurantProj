@@ -1,0 +1,17 @@
+<%= form_for @user, html: {class: "form-group col-lg-6 col-lg-offset-3 row"} do |f|%>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, :class => "form-control" %>
+
+  <%= f.label :intro, "Intro" %>
+  <%= f.text_area :intro, :class => "form-control" %>
+
+  <%= f.label :avator, "Avator" %>
+  <%= image_tag @user.avator, width: '150px' if @user.avator? %>
+  <%= f.file_field :avator %>
+
+  
+
+  <%= f.submit "Update" ,class: "btn btn-primary col-lg-12" %>
+  <%= f.button "Cancel", type: :reset, class: "btn btn-default col-lg-12" %>
+  <%= link_to ' Back', user_path, :class => "btn btn-link col-lg-12" %>
+<% end %>
