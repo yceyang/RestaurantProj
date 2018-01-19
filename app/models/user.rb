@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avator, AvatorUploader
-  validates_presence_of :name, :intro, :avator
+  validates_presence_of :name, :intro
 
   has_many :comments
 
   def admin?
     self.role == "admin"
   end
-  
+
 end
