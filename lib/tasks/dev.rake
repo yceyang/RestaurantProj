@@ -36,10 +36,10 @@ namespace :dev do
 
     Comment.delete_all
 
-    user = User.all.drop_while{ |user| user.role == "admin" }
+    user = User.all.drop_while{ |u| u.role == "admin" }
 
     Restaurant.all.each do |restaurant|
-      rand(1...5).times do |t|
+      rand(1...3).times do |t|
         restaurant.comments.create(
           content: FFaker::Lorem.sentence,
           restaurant: restaurant,
