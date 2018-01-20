@@ -39,7 +39,7 @@ namespace :dev do
     user = User.all.drop_while{ |user| user.role == "admin" }
 
     Restaurant.all.each do |restaurant|
-      rand(3...5).times do |t|
+      rand(1...5).times do |t|
         restaurant.comments.create(
           content: FFaker::Lorem.sentence,
           restaurant: restaurant,

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// restaurant box
+
 .restaurant-box
 {
   border: 1px solid #ddd;
@@ -21,6 +23,8 @@
   padding: 10px;
 }
 
+// pagination
+
 .nav-pills-center
 {
   margin: 15px 0;
@@ -33,3 +37,33 @@
   padding: 0 5px;
   display: inline-block;
 }
+
+// commented restaurant box
+
+.my-restaurant
+{
+  border: 0;
+  margin: 0;
+  padding: 10px;
+
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+
+  vertical-align: middle;
+  text-align: center;
+}
+
+.my-restaurant img
+{
+  max-height: 170px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.my-restaurant:hover
+{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+

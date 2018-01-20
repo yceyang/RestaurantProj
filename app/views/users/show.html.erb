@@ -16,3 +16,23 @@
     <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" if current_user.id == @user.id %>
   </div>
 </div>
+
+<hr>
+
+<div class="row">
+  <div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Commented Restaurants</h3>
+  </div>
+  <div class="panel-body">
+    <% @commented_restaurants.uniq.each do |restaurant| %>
+      <div class="my-restaurant col-sm-2">
+        <%= link_to restaurant_path(restaurant), class:"text-center" do %>
+          <%= image_tag("R.png", alt: "commented restaurant", class: "img-responsive center-block") %>
+          <%= restaurant.name %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
