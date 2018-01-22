@@ -3,9 +3,10 @@ namespace :dev do
     
     20.times do |t|
       User.create!(
-        name: FFaker::Name.name,
         email: FFaker::Internet.email,
-        password: "testuser"
+        password: "testuser",
+        name: FFaker::Name.name,
+        intro: FFaker::LoremFR.phrase
       )
     end
 
@@ -50,21 +51,5 @@ namespace :dev do
 
     puts "Created fake comments"
     puts "now you have #{Comment.count} comments data"
-  end
-
-  task fill_user_profile: :environment do
-    User.all.each do |user|
-
-      if user.role != "admin"
-        user.name = FFaker::Name.name
-        user.intro = FFaker::LoremFR.phrase
-        user.save!
-      end
-
-      puts user.email
-      puts user.name
-      puts user.intro
-      puts
-    end
   end
 end
