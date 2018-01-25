@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
 
     member do
-      get :dashbord
+      get :dashboard
     end
   end
 
