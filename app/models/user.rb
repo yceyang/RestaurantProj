@@ -7,7 +7,7 @@ class User < ApplicationRecord
   mount_uploader :avator, AvatorUploader
   validates_presence_of :name, :intro
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :restaurants, through: :comments
 
   def admin?
