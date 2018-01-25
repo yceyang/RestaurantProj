@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # restaurant / comment
   resources :restaurants, only: [:index, :show] do
-    # resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
 
     collection do
       get :feeds
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # category
   resources :categories, only: [:show]
 
-  # Admin's routes
+  # admin's routes
   namespace :admin do
     resources :restaurants
     resources :categories
