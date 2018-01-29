@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :restaurants, through: :comments
 
+  # use source to tell rails the source of self define table
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
+
   def admin?
     self.role == "admin"
   end
