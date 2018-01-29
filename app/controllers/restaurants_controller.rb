@@ -6,20 +6,36 @@ class RestaurantsController < ApplicationController
     @categories = Category.all
   end
 
-  #show
+  # show
   def show
     @restaurant = Restaurant.find(params[:id])
     @comment = Comment.new # new a comment instance
   end
 
-  #feeds
+  # feeds
   def feeds
     @recent_restaurants = Restaurant.order(created_at: :desc).limit(10)
     @recent_comments = Comment.order(created_at: :desc).limit(10)    
   end
 
-  #dashboard
+  # dashboard
   def dashboard
     @restaurant = Restaurant.find(params[:id])
   end
+
+  # favorite
+  def favorite
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.favorites.create!(user: current_user)
+    redirect_back(fallback_location: root_path)  # Redirect to last page, if fail to root page
+  end
+
+  # unfavorite
+  def unfavorite
+    @restaurant = Restaurant.find(params[:id])
+    @favorites = Favorite.where(user: current_user, restaurant: @restaurant)
+    @favorites.destroy_all
+    redirect_back(fallback_location: root_path)  # Redirect to last page, if fail to root page
+  end
+
 end
