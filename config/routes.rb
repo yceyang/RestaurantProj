@@ -6,16 +6,25 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :edit, :update]
   
-  # restaurant / comment
+  # restaurant
   resources :restaurants, only: [:index, :show] do
+
+    # restaurant / comment
     resources :comments, only: [:create, :destroy]
 
     collection do
+      # restaurant / feeds
       get :feeds
     end
-
+    
     member do
+      # restaurants / id / dashboard
       get :dashboard
+
+      # restaurants / id / favorite
+      post :favorite
+      # restaurants /id / unfavorite
+      post :unfavorite
     end
   end
 
