@@ -30,8 +30,10 @@
         <!--p>地址：<%= restaurant.address %></p-->
         <!--p>電話：<%= restaurant.tel %></p-->
         <!--p>營業時間：<%= restaurant.opening_hours %></p-->
-        <p><%= render partial: "shared/favorite", locals: {object: restaurant} %></p>
-        <p><%= render partial: "shared/like", locals: {object: restaurant} %></p>
+        <p>
+          <%= render partial: "shared/favorite", locals: {object: restaurant} %>
+          <%= render partial: "shared/like", locals: {object: restaurant} %>
+        </p>
       </div>
     </div>
   </div>
