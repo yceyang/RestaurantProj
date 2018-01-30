@@ -25,6 +25,11 @@ Rails.application.routes.draw do
       post :favorite
       # restaurants /id / unfavorite
       post :unfavorite
+
+      # restaurant / id / like
+      post :like
+      # restaurant / id / unlike
+      post :unlike
     end
   end
 
