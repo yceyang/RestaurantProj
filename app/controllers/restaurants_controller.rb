@@ -38,4 +38,19 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)  # Redirect to last page, if fail to root page
   end
 
+  # like
+  def like
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.likes.create!(user: current_user)
+    redirect_back(fallback_location: root_path)  # Redirect to last page, if fail to root page
+  end
+
+  # unlike
+  def unlike
+    @restaurant = Restaurant.find(params[:id])
+    @likes = Like.where(user: current_user, restaurant: @restaurant)
+    @likes.destroy_all
+    redirect_back(fallback_location: root_path)  # Redirect to last page, if fail to root page
+  end
+
 end
