@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 
   # user
   devise_for :users
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update] do
 
-    # followship (sol1)
-    member do
-      # users / id / follow
-      post :follow
-      # users / id / unfollow
-      post :unfollow
-    end
+    ## followship (sol1)
+    #member do
+      ## users / id / follow
+      #post :follow
+      ## users / id / unfollow
+      #post :unfollow
+    #end
 
   end
 
