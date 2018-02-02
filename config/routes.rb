@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     collection do
       # restaurant / feeds
       get :feeds
+
+      #restaurant / ranking
+      get :ranking
     end
     
     member do
