@@ -18,7 +18,7 @@ namespace :dev do
     
     Restaurant.destroy_all
 
-    500.times do |t|
+    200.times do |t|
       Restaurant.create!(
         name: FFaker::Name.first_name,
         opening_hours: FFaker::Time.datetime,
@@ -51,5 +51,24 @@ namespace :dev do
 
     puts "Created fake comments"
     puts "now you have #{Comment.count} comments data"
+  end
+
+  task random_favorites: :environment do
+
+    Favorite.delete_all
+
+    User.all.each do |user|
+      restaurants = Restaurant.all.sample(rand(30...100))
+      restaurants.each do |restaurant|
+        user.favorites.create!(
+          restaurant: restaurant
+        )
+        restaurant.count_favorites
+      end
+      puts "#{user.name} has #{user.favorites.count} favorite restaurants"
+    end
+
+    puts "Random favorite restaurant"
+    puts "now you have #{Favorite.count} favorites data"
   end
 end

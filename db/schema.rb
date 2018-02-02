@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180202132550) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "category_id"
-    t.integer "favorites_count"
+    t.integer "favorites_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
