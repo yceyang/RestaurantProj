@@ -63,7 +63,6 @@ namespace :dev do
         user.favorites.create!(
           restaurant: restaurant
         )
-        restaurant.count_favorites
       end
       puts "#{user.name} has #{user.favorites.count} favorite restaurants"
     end
