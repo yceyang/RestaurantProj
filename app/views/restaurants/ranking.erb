@@ -8,7 +8,21 @@
 <h1>Top 10 人氣餐廳</h1>
 
 <% @popular_restaurants.each do |restaurant| %>
-  <ul>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %> - <%= restaurant.favorites_count %> </li>
-  </ul>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= link_to restaurant_path(restaurant), class:"text-center" do %>
+        <%= image_tag("381x254.png", alt: "commented restaurant", class: "img-responsive center-block") %>
+      <% end %>
+    </div>
+    <div class="col-sm-8">
+      <h4>
+        <%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <span class="badge">收藏數 <%= restaurant.favorites_count %></span>
+      </h4>
+      <p><%= restaurant.description %></p>
+      <%= render partial: "shared/favorite", locals: {object: restaurant} %>
+      <%= render partial: "shared/like", locals: {object: restaurant} %>
+    </div>
+  </div>
+  <hr>
 <% end %>
