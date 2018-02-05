@@ -58,7 +58,7 @@ namespace :dev do
     Favorite.delete_all
 
     User.all.each do |user|
-      restaurants = Restaurant.all.sample(rand(30...100))
+      restaurants = Restaurant.all.sample(rand(10...50))
       restaurants.each do |restaurant|
         user.favorites.create!(
           restaurant: restaurant
