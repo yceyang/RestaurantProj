@@ -19,38 +19,82 @@
 
 <hr>
 
-<div class="row">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @commented_restaurants.uniq.count %> Commented Restaurants</h3>
+<div class="col-sm-4">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @followings.uniq.count %> Followings</h3>
+      </div>
+      <div class="panel-body">
+        <% @followings.uniq.each do |user| %>
+          <div class="profile-followship col-sm-12">
+            <%= link_to user_path(user), class:"text-center" do %>
+              <%= image_tag("blank-profile.png", alt: "followings") %>
+              <p><%= user.name %></p>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="panel-body">
-      <% @commented_restaurants.uniq.each do |restaurant| %>
-        <div class="my-restaurant col-sm-2">
-          <%= link_to restaurant_path(restaurant), class:"text-center" do %>
-            <%= image_tag("R.png", alt: "commented restaurant", class: "img-responsive center-block") %>
-            <%= restaurant.name %>
-          <% end %>
-        </div>
-      <% end %>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @followers.uniq.count %> Followers</h3>
+      </div>
+      <div class="panel-body">
+        <% @followers.uniq.each do |user| %>
+          <div class="profile-followship col-sm-12">
+            <%= link_to user_path(user), class:"text-center" do %>
+              <%= image_tag("blank-profile.png", alt: "followers") %>
+              <p><%= user.name %></p>
+              <hr>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @favorited_restaurants.uniq.count %> Favorited Restaurants</h3>
+<div class="col-sm-1"></div>
+
+<div class="col-sm-7">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @commented_restaurants.uniq.count %> Commented Restaurants</h3>
+      </div>
+      <div class="panel-body">
+        <% @commented_restaurants.uniq.each do |restaurant| %>
+          <div class="my-restaurant col-sm-3">
+            <%= link_to restaurant_path(restaurant), class:"text-center" do %>
+              <%= image_tag("R.png", alt: "commented restaurant", class: "img-responsive center-block") %>
+              <%= restaurant.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="panel-body">
-      <% @favorited_restaurants.uniq.each do |restaurant| %>
-        <div class="my-restaurant col-sm-2">
-          <%= link_to restaurant_path(restaurant), class:"text-center" do %>
-            <%= image_tag("R.png", alt: "favorited restaurant", class: "img-responsive center-block") %>
-            <%= restaurant.name %>
-          <% end %>
-        </div>
-      <% end %>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @favorited_restaurants.uniq.count %> Favorited Restaurants</h3>
+      </div>
+      <div class="panel-body">
+        <% @favorited_restaurants.uniq.each do |restaurant| %>
+          <div class="my-restaurant col-sm-3">
+            <%= link_to restaurant_path(restaurant), class:"text-center" do %>
+              <%= image_tag("R.png", alt: "favorited restaurant", class: "img-responsive center-block") %>
+              <%= restaurant.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
